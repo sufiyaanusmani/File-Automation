@@ -1,3 +1,6 @@
+# Author: Sufiyaan Usmani (https://github.com/sufiyaanusmani)
+# Email: usmanisufiyaan@gmail.com
+
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 import time
@@ -8,7 +11,8 @@ from pathlib import Path
 directory = "C:\\Users\\Sufyan\\Downloads"
 # directory = Path("D:\\testdir")
 
-images = (".bmp", ".jpg", ".jpeg", ".gif", ".png", ".eps", ".ico")
+images = (".bmp", ".jpg", ".jpeg", ".gif",
+          ".png", ".eps", ".ico", "jfif", "webp")
 documents = (".doc", ".docx", ".odt", ".pdf", ".xls",
              ".xlsx", ".ods", ".ppt", ".pptx", ".txt")
 media = (".mp3", ".mp4")
@@ -72,6 +76,9 @@ def move():
 
 
 if __name__ == '__main__':
-    move()
     w = Watcher()
-    w.run()
+    try:
+        move()
+        w.run()
+    except Exception as ex:
+        print(ex)
